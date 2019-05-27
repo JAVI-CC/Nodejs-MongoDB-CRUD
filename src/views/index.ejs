@@ -1,27 +1,28 @@
 <% include partials/_header %>
 
-<div class="container">
-	<div class="row">
+	<div class="container">
+	<h1>Tareas</h1>
+	<p class="text-xl-left">-Inserte una tarea</p>
+		<div class="row">
 		<!-- Form -->
-		<div class="col-md-5">
-			<div class="card">
-				<div class="card-body">
-					<form action="/add" method="POST">
-						<div class="form-group">
-							<input type="text" name="title" placeholder="Inserta un titulo" class="form-control">
-						</div>
-						<div class="form-group">
-							<textarea name="description" cols="80" class="form-control"
-								placeholder="Inserta una Descripcion"></textarea>
-						</div>
-						<button type="submit" class="btn btn-primary btn-block">Añadir</button>
-					</form>
-				</div>
+		<div class="container">
+		<div class="">
+		<div class="">
+		<form action="/add" method="POST" >
+			<div class="form-group">
+				<input type="text" name="title" placeholder="Inserta un titulo" class="form-control">
 			</div>
+			<div class="form-group">
+				<textarea name="description" cols="80" class="form-control" placeholder="Inserta una Descripcion"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">Añadir</button>
+		</form>
+		  </div>
+		 </div>
 		</div>
 
 		<!-- List -->
-		<div class="col-md-7">
+		<div class="container">
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
@@ -33,23 +34,23 @@
 				</thead>
 				<tbody>
 					<% for(var i = 0; i < tasks.length; i++) {%>
-					<tr>
-						<td><%= i + 1 %></td>
-						<td><%= tasks[i].title %></td>
-						<td><%= tasks[i].description %></td>
-						<td>
-							<a href="/turn/<%= tasks[i]._id %>"
+						<tr> 
+							<td><%= i + 1 %></td>
+							<td><%= tasks[i].title %></td>
+							<td><%= tasks[i].description %></td>
+							<td>
+								<a href="/turn/<%= tasks[i]._id %>" 
 								class="btn <%= tasks[i].status ? 'btn-success' : 'btn-dark' %>">
 								Hecho</a>
-							<a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Eliminar</a>
-							<a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">Editar</a>
-						</td>
-					</tr>
+								<a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Eliminar</a>
+								<a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">Editar</a>
+							</td>
+						</tr>
 					<% } %>
 				</tbody>
 			</table>
 		</div>
+		</div>
 	</div>
-</div>
 
 <% include partials/_footer %>
